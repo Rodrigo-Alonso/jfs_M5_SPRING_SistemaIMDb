@@ -1,0 +1,6 @@
+#JWT
+security:
+  jwt:
+    token:
+      secret-key: CLEdutecno-SecretKey
+      expire-length: 3600000
