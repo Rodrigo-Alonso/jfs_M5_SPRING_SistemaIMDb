@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import cl.edutecno.dto.RoleDTO;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -24,4 +25,14 @@ public class Role {
 	@Enumerated(EnumType.STRING)
 	@Column(name = "ROLE")
 	private Roles role;
+	
+	//Convierte toDTO
+	public RoleDTO toDTO() {
+		RoleDTO roleDTO = new RoleDTO();
+		
+		roleDTO.setId(this.getId());
+		roleDTO.setRole(this.getRole());
+		
+		return roleDTO;
+	}
 }

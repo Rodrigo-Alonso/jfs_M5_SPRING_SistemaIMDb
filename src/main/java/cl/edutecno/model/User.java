@@ -11,6 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import cl.edutecno.dto.UserDTO;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -40,4 +41,17 @@ public class User {
 	@ElementCollection(fetch = FetchType.EAGER)
 	@Column(name = "ROLES")
 	private List<Role> roles;
+	
+//	convierte User en UserDTO
+	public UserDTO toDTO() {
+		UserDTO userDTO = new UserDTO();
+		
+		userDTO.setId(this.getId());
+		userDTO.setUsername(this.getUsername());
+		userDTO.setEmail(this.getEmail());
+		userDTO.setPassword(this.getPassword());
+		userDTO.setRoles(this.getRoles());
+		
+		return userDTO;
+	}
 }

@@ -1,13 +1,14 @@
 package cl.edutecno.dto;
 
+import cl.edutecno.model.Show;
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
-public class ShowDTO {
-
+public class RatingDTO {
+	
 	private Long id;
-	private String showTitle;
-	private String showNetwork;
+	private int rating;
+	private Show show;
 }
