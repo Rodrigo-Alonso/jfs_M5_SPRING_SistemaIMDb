@@ -39,7 +39,6 @@ public class User {
 	private String passwordConfirmation;
 	
 	@ElementCollection(fetch = FetchType.EAGER)
-	@Column(name = "ROLES")
 	private List<Role> roles;
 	
 //	convierte User en UserDTO

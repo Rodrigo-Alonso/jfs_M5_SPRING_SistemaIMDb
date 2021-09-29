@@ -5,7 +5,7 @@ import cl.edutecno.dto.RoleDTO;
 import cl.edutecno.dto.ShowDTO;
 import cl.edutecno.dto.UserDTO;
 import cl.edutecno.model.Rating;
-import cl.edutecno.model.Role;
+import cl.edutecno.model.Role_prueba;
 import cl.edutecno.model.Show;
 import cl.edutecno.model.User;
 import lombok.NoArgsConstructor;
@@ -52,13 +52,13 @@ public class DTOMapper {
 		return rating;
 	}
 	
-	private static void roleToEntity(RoleDTO roleDTO, Role role) {
+	private static void roleToEntity(RoleDTO roleDTO, Role_prueba role) {
 		role.setId(roleDTO.getId());
 		role.setRole(role.getRole());
 	}
 	
-	public static Role roleToEntity(RoleDTO roleDTO) {
-		Role role = new Role();
+	public static Role_prueba roleToEntity(RoleDTO roleDTO) {
+		Role_prueba role = new Role_prueba();
 		roleToEntity(roleDTO, role);
 		return role;
 	}

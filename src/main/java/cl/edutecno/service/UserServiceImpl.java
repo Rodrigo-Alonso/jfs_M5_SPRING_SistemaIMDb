@@ -106,8 +106,12 @@ public class UserServiceImpl implements UserService, UserDetailsService {
 		return org.springframework.security.core.userdetails.User
 				.withUsername(username)
 				.password(user.getPassword())
-				.authorities(user.getRoles().get(0).getRole()).accountExpired(false).accountLocked(false).credentialsExpired(false)
-				.disabled(false).build();
+				.authorities(user.getRoles())
+				.accountExpired(false)
+				.accountLocked(false)
+				.credentialsExpired(false)
+				.disabled(false)
+				.build();
 		//.authorities(user.getRoles().get(0).getRole()): Solo va a funcionar con el primer Rol
 	}
 

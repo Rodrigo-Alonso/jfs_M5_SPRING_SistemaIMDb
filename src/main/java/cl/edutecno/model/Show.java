@@ -29,7 +29,7 @@ public class Show {
 	private String showNetwork;
 
 	// Convierte toDTO
-	public ShowDTO toDto() {
+	public ShowDTO toDTO() {
 		ShowDTO showDTO = new ShowDTO();
 
 		showDTO.setId(this.getId());

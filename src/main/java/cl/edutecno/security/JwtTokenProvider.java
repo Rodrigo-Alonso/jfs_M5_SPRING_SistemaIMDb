@@ -46,7 +46,7 @@ public class JwtTokenProvider {
 	public String createToken(String username, List<Role> roles) {
 
 		Claims claims = Jwts.claims().setSubject(username);
-		claims.put("auth", roles.stream().map(s -> new SimpleGrantedAuthority(s.getRole().getAuthority()))
+		claims.put("auth", roles.stream().map(s -> new SimpleGrantedAuthority(s.getAuthority()))
 				.filter(Objects::nonNull).collect(Collectors.toList()));
 		Date now = new Date();
 		Date validity = new Date(now.getTime() + validateInMilliseconds);
@@ -65,7 +65,7 @@ public class JwtTokenProvider {
 
 	public String resolveToken(HttpServletRequest req) {
 		String bearerToken = req.getHeader("Authorization");
-		if (bearerToken != null && bearerToken.startsWith("Bearer")) {
+		if (bearerToken != null && bearerToken.startsWith("Bearer ")) {
 			return bearerToken.substring(7);
 		}
 		return null;

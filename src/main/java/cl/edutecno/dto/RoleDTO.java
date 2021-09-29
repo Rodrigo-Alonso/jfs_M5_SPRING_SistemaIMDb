@@ -1,6 +1,6 @@
 package cl.edutecno.dto;
 
-import cl.edutecno.model.Roles;
+import cl.edutecno.model.Role;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -9,5 +9,5 @@ import lombok.Setter;
 public class RoleDTO {
 	
 	private Long id;
-	private Roles role;
+	private Role role;
 }
