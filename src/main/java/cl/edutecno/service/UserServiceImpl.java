@@ -94,26 +94,21 @@ public class UserServiceImpl implements UserService, UserDetailsService {
 
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		// TODO Auto-generated method stub
-		return null;
+		// Se busca usuario por su username
+		final User user = userRepository.findByUsername(username);
+		// Se evalua si usuario existe
+		if (user == null) {
+			// Si no existe se retorna excepcion de "Usuario no encontrado"
+			throw new UsernameNotFoundException("Usuario '" + username + "' no encontrado");
+		}
+		// Si existe, se retorna un objeto de tipo UserDetails, validando contraseña y
+		// su respectivo Rol.
+		return org.springframework.security.core.userdetails.User
+				.withUsername(username)
+				.password(user.getPassword())
+				.authorities(user.getRoles().get(0).getRole()).accountExpired(false).accountLocked(false).credentialsExpired(false)
+				.disabled(false).build();
+		//.authorities(user.getRoles().get(0).getRole()): Solo va a funcionar con el primer Rol
 	}
-
-//	@Override
-//	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-//		// Se busca usuario por su username
-//		final User user = userRepository.findByUsername(username);
-//		// Se evalua si usuario existe
-//		if (user == null) {
-//			// Si no existe se retorna excepcion de "Usuario no encontrado"
-//			throw new UsernameNotFoundException("Usuario '" + username + "' no encontrado");
-//		}
-//		// Si existe, se retorna un objeto de tipo UserDetails, validando contraseña y
-//		// su respectivo Rol.
-//		return org.springframework.security.core.userdetails.User
-//				.withUsername(username)
-//				.password(user.getPassword())
-//				.authorities(user.getRoles().forEach(a -> a.getRole())).accountExpired(false).accountLocked(false).credentialsExpired(false)
-//				.disabled(false).build();
-//	}
 
 }
