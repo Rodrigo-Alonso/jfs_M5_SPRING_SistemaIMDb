@@ -53,7 +53,7 @@ public class UserServiceImpl implements UserService, UserDetailsService {
 	}
 
 	@Override
-	public UserDTO findById(Long id) {
+	public UserDTO findById(Integer id) {
 		// findById si no encuentra, retorna un UserDTO vacio
 		return userRepository.findById(id).orElse(new User()).toDTO();
 	}

@@ -44,7 +44,7 @@ public class ShowServiceImpl implements ShowService{
 
 	@Override
 	@Transactional(readOnly = true)
-	public ShowDTO findById(Long id) {
+	public ShowDTO findById(Integer id) {
 		return showRepository.findById(id).orElse(new Show()).toDTO();
 	}
 	

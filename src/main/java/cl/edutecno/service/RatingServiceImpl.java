@@ -30,18 +30,15 @@ public class RatingServiceImpl implements RatingService{
 		return ratingRepository.findAll().stream().map(Rating::toDTO).collect(Collectors.toList());
 	}
 	
-	//APLICAR QUERY EN RATINGREPOSITORY
 	@Override
 	@Transactional(readOnly = true)
-	public List<RatingDTO> findByShowId() {
-		return null;
+	public List<RatingDTO> findAllByShowId(Integer id) {
+		return ratingRepository.findAllRatingsByShowId(id).stream().map(Rating::toDTO).collect(Collectors.toList());
 	}
 
-//	@Override
-//	@Transactional(readOnly = true)
-//	public Long avgRating(Long id) {
-//		return ratingRepository.ratingsPromedio(id);
-//	}
-	
-	
+	@Override
+	@Transactional(readOnly = true)
+	public Double avgRatingByShowId(Integer id) {
+		return ratingRepository.ratingsPromedio(id);
+	}
 }

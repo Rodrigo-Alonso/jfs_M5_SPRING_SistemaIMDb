@@ -8,7 +8,7 @@ public interface RatingService {
 	
 	void save(RatingDTO ratingDTO);
 	List<RatingDTO> findAll();
-	List<RatingDTO> findByShowId();
-	//Long avgRating(Long id);
+	List<RatingDTO> findAllByShowId(Integer id);
+	Double avgRatingByShowId(Integer id);
 
 }

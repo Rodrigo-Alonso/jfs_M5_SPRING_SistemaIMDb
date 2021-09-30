@@ -17,7 +17,7 @@ public class DTOMapper {
 		user.setEmail(userDTO.getEmail());
 		user.setPassword(userDTO.getPassword());
 		user.setPasswordConfirmation(userDTO.getPasswordConfirmation());
-		user.setRoles(userDTO.getRoles());
+		user.setRole(userDTO.getRole());
 	}
 	
 	public static User userToEntity(UserDTO userDTO) {

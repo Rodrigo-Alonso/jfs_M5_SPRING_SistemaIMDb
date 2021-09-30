@@ -33,7 +33,7 @@ public class UserController {
 
 	@GetMapping("/{id}")
 	@ResponseStatus(HttpStatus.OK)
-	public UserDTO findOneUser(@PathVariable Long id) {
+	public UserDTO findOneUser(@PathVariable Integer id) {
 		return userService.findById(id);
 	}
 

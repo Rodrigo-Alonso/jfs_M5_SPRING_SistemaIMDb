@@ -42,7 +42,7 @@ public class ShowController {
 
 	@GetMapping("/{id}")
 	@ResponseStatus(HttpStatus.OK)
-	public ShowDTO findOneShow(@PathVariable Long id) {
+	public ShowDTO findOneShow(@PathVariable Integer id) {
 		return showService.findById(id);
 	}
 
@@ -70,10 +70,16 @@ public class ShowController {
 		return ratingService.findAll();
 	}
 	
-	@GetMapping("/avgRatings")
+	@GetMapping("/avgRatings/{id}")
 	@ResponseStatus(HttpStatus.OK)
-	public Long avgRating(@PathVariable Long id) {
-		return null;
+	public Double avgRating(@PathVariable Integer id) {
+		return ratingService.avgRatingByShowId(id);
+	}
+	
+	@GetMapping("/ratingsByShow/{id}")
+	@ResponseStatus(HttpStatus.OK)
+	public List<RatingDTO> findRatingsByShowId(@PathVariable Integer id) {
+		return ratingService.findAllByShowId(id);
 	}
 
 }

@@ -10,7 +10,7 @@ public interface UserService {
 	
 	void update(UserDTO userDTO);
 	List<UserDTO> findAll();
-	UserDTO findById(Long id);
+	UserDTO findById(Integer id);
 	void delete(UserDTO userDTO);
 	String signIn(String username, String password);
 	String signUp(UserDTO userDTO);

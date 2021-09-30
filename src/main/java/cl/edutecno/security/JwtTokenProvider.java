@@ -2,9 +2,6 @@ package cl.edutecno.security;
 
 import java.util.Base64;
 import java.util.Date;
-import java.util.List;
-import java.util.Objects;
-import java.util.stream.Collectors;
 
 import javax.annotation.PostConstruct;
 import javax.servlet.http.HttpServletRequest;
@@ -43,10 +40,13 @@ public class JwtTokenProvider {
 		secretKey = Base64.getEncoder().encodeToString(secretKey.getBytes());
 	}
 
-	public String createToken(String username, Role role ) {
+	public String createToken(String username, Role role) {
 
 		Claims claims = Jwts.claims().setSubject(username);
-		claims.put("auth", role.getAuthority().filter(Objects::nonNull).collect(Collectors.toList()));
+		SimpleGrantedAuthority sga = new SimpleGrantedAuthority(role.getAuthority());
+		claims.put("auth", sga);
+//		claims.put("auth", roles.stream().map(s -> new SimpleGrantedAuthority(s.getAuthority()))
+//				.filter(Objects::nonNull).collect(Collectors.toList()));
 		Date now = new Date();
 		Date validity = new Date(now.getTime() + validateInMilliseconds);
 		return Jwts.builder().setClaims(claims).setExpiration(validity).signWith(SignatureAlgorithm.HS256, secretKey)

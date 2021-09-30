@@ -29,11 +29,13 @@ public class Rating {
 	@Column(name = "rating")
 	private int rating;
 	
-	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+//	@JsonIgnore //Tomcat exception Cannot call sendError() after the response has been committed?
+	@ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.LAZY)
 	@JoinColumn(name = "show_id")
 	private Show show;
 	
-	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+//	@JsonIgnore
+	@ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.LAZY)
 	@JoinColumn(name = "user_id")
 	private User user;
 

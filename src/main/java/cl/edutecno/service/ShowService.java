@@ -10,8 +10,9 @@ public interface ShowService {
 	void update(ShowDTO showDTO);
 	void delete(ShowDTO showDTO);
 	List<ShowDTO> findAll();
-	ShowDTO findById(Long id);
+	ShowDTO findById(Integer id);
 	List<ShowDTO> findByRating(int rating);
+	
 	
 	
 }
