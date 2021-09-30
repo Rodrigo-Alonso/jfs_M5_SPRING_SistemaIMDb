@@ -1,11 +1,9 @@
 package cl.edutecno.utils;
 
 import cl.edutecno.dto.RatingDTO;
-import cl.edutecno.dto.RoleDTO;
 import cl.edutecno.dto.ShowDTO;
 import cl.edutecno.dto.UserDTO;
 import cl.edutecno.model.Rating;
-import cl.edutecno.model.Role_prueba;
 import cl.edutecno.model.Show;
 import cl.edutecno.model.User;
 import lombok.NoArgsConstructor;
@@ -44,6 +42,7 @@ public class DTOMapper {
 		rating.setId(ratingDTO.getId());
 		rating.setRating(ratingDTO.getRating());
 		rating.setShow(ratingDTO.getShow());
+		rating.setUser(ratingDTO.getUser());
 	}
 	
 	public static Rating ratingToEntity(RatingDTO ratingDTO) {
@@ -52,14 +51,4 @@ public class DTOMapper {
 		return rating;
 	}
 	
-	private static void roleToEntity(RoleDTO roleDTO, Role_prueba role) {
-		role.setId(roleDTO.getId());
-		role.setRole(role.getRole());
-	}
-	
-	public static Role_prueba roleToEntity(RoleDTO roleDTO) {
-		Role_prueba role = new Role_prueba();
-		roleToEntity(roleDTO, role);
-		return role;
-	}
 }

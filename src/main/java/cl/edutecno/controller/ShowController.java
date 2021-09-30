@@ -13,7 +13,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import cl.edutecno.dto.RatingDTO;
 import cl.edutecno.dto.ShowDTO;
+import cl.edutecno.service.RatingService;
 import cl.edutecno.service.ShowService;
 import lombok.AllArgsConstructor;
 
@@ -24,6 +26,8 @@ public class ShowController {
 	
 	private ShowService showService;
 	
+	private RatingService ratingService;
+	
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
 	public void addShow(@RequestBody ShowDTO showDTO) {
@@ -32,7 +36,7 @@ public class ShowController {
 	
 	@GetMapping
 	@ResponseStatus(HttpStatus.OK)
-	public List<ShowDTO> findAllShow() {
+	public List<ShowDTO> findAllShows() {
 		return showService.findAll();
 	}
 
@@ -52,6 +56,24 @@ public class ShowController {
 	@ResponseStatus(HttpStatus.OK)
 	public void deleteShow(@RequestBody ShowDTO showDTO) {
 		showService.delete(showDTO);
+	}
+	
+	@PostMapping("/rating")
+	@ResponseStatus(HttpStatus.CREATED)
+	public void addRating(@RequestBody RatingDTO ratingDTO) {
+		ratingService.save(ratingDTO);
+	}
+	
+	@GetMapping("/ratings")
+	@ResponseStatus(HttpStatus.OK)
+	public List<RatingDTO> findAllRatings() {
+		return ratingService.findAll();
+	}
+	
+	@GetMapping("/avgRatings")
+	@ResponseStatus(HttpStatus.OK)
+	public Long avgRating(@PathVariable Long id) {
+		return null;
 	}
 
 }

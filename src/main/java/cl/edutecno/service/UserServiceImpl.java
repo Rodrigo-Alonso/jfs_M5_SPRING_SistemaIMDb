@@ -69,7 +69,7 @@ public class UserServiceImpl implements UserService, UserDetailsService {
 			// Validar datos de inicio de sesion
 			authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(username, password));
 			// Retorna token si los datos son correctos
-			return jwtTokenProvider.createToken(username, userRepository.findByUsername(username).getRoles());
+			return jwtTokenProvider.createToken(username, userRepository.findByUsername(username).getRole());
 		} catch (AuthenticationException e) {
 			// Excepcion en caso de datos erroneos
 			throw new RestServiceException("username o password invalido", HttpStatus.UNPROCESSABLE_ENTITY);
@@ -85,7 +85,7 @@ public class UserServiceImpl implements UserService, UserDetailsService {
 			// Se almacena el usuario
 			userRepository.save(DTOMapper.userToEntity(userDTO));
 			// Retrona token valido para este usuario
-			return jwtTokenProvider.createToken(userDTO.getUsername(), userDTO.getRoles());
+			return jwtTokenProvider.createToken(userDTO.getUsername(), userDTO.getRole());
 		} else {
 			// En caso de que nombre de usuario exista se retonra excepcion
 			throw new RestServiceException("Username ya esta en uso", HttpStatus.UNPROCESSABLE_ENTITY);
@@ -106,7 +106,7 @@ public class UserServiceImpl implements UserService, UserDetailsService {
 		return org.springframework.security.core.userdetails.User
 				.withUsername(username)
 				.password(user.getPassword())
-				.authorities(user.getRoles())
+				.authorities(user.getRole())
 				.accountExpired(false)
 				.accountLocked(false)
 				.credentialsExpired(false)

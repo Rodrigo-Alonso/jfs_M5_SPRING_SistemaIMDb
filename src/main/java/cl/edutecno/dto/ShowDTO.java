@@ -7,7 +7,7 @@ import lombok.Setter;
 @Setter
 public class ShowDTO {
 
-	private Long id;
+	private Integer id;
 	private String showTitle;
 	private String showNetwork;
 }

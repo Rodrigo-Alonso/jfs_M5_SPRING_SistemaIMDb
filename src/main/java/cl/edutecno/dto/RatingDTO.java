@@ -1,6 +1,7 @@
 package cl.edutecno.dto;
 
 import cl.edutecno.model.Show;
+import cl.edutecno.model.User;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -8,7 +9,8 @@ import lombok.Setter;
 @Setter
 public class RatingDTO {
 	
-	private Long id;
+	private Integer id;
 	private int rating;
 	private Show show;
+	private User user;
 }

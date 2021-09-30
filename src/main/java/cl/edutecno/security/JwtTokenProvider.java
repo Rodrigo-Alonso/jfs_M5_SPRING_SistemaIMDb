@@ -43,11 +43,10 @@ public class JwtTokenProvider {
 		secretKey = Base64.getEncoder().encodeToString(secretKey.getBytes());
 	}
 
-	public String createToken(String username, List<Role> roles) {
+	public String createToken(String username, Role role ) {
 
 		Claims claims = Jwts.claims().setSubject(username);
-		claims.put("auth", roles.stream().map(s -> new SimpleGrantedAuthority(s.getAuthority()))
-				.filter(Objects::nonNull).collect(Collectors.toList()));
+		claims.put("auth", role.getAuthority().filter(Objects::nonNull).collect(Collectors.toList()));
 		Date now = new Date();
 		Date validity = new Date(now.getTime() + validateInMilliseconds);
 		return Jwts.builder().setClaims(claims).setExpiration(validity).signWith(SignatureAlgorithm.HS256, secretKey)

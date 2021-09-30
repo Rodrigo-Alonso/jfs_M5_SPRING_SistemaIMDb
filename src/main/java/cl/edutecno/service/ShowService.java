@@ -3,7 +3,6 @@ package cl.edutecno.service;
 import java.util.List;
 
 import cl.edutecno.dto.ShowDTO;
-import cl.edutecno.model.Show;
 
 public interface ShowService {
 	

@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 import cl.edutecno.model.User;
 
 @Repository
-public interface UserRepository extends JpaRepository<User, Long>{
+public interface UserRepository extends JpaRepository<User, Integer>{
 	
 	boolean existsByUsername(String username);
 	User findByUsername(String username);

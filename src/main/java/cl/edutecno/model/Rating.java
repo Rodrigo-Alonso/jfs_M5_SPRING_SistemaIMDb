@@ -3,6 +3,7 @@ package cl.edutecno.model;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -17,20 +18,24 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-@Table(name = "RATING")
+@Table(name = "rating")
 public class Rating {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "ID_RATING")
-	private Long id;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id")
+	private Integer id;
 
-	@Column(name = "RATING")
+	@Column(name = "rating")
 	private int rating;
-
-	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "SHOW_ID", referencedColumnName = "ID_SHOW")
+	
+	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@JoinColumn(name = "show_id")
 	private Show show;
+	
+	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@JoinColumn(name = "user_id")
+	private User user;
 
 	// Convierte toDTO;
 	public RatingDTO toDTO() {
@@ -39,6 +44,7 @@ public class Rating {
 		ratingDTO.setId(this.getId());
 		ratingDTO.setRating(this.getRating());
 		ratingDTO.setShow(this.getShow());
+		ratingDTO.setUser(this.getUser());
 
 		return ratingDTO;
 	}
