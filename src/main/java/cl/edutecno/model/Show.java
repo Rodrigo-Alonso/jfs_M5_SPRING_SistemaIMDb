@@ -7,24 +7,42 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+import cl.edutecno.dto.ShowDTO;
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
 @Entity
-@Table(name = "SHOW")
+@Table(name = "shows")
+@JsonIgnoreProperties({"hibernateLazyInitializer"})
 public class Show {
-	
+
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "ID_SHOW")
-	private Long id;
-	
-	@Column(name = "SHOW_TITLES")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id")
+	private Integer id;
+
+	@Column(name = "show_title")
 	private String showTitle;
-	
-	@Column(name = "SHOW_NETWORK")
+
+	@Column(name = "show_network")
 	private String showNetwork;
+	
+//	@OneToMany(fetch = FetchType.LAZY, mappedBy = "show")
+//	private List<Rating> ratings;
+
+	// Convierte toDTO
+	public ShowDTO toDTO() {
+		ShowDTO showDTO = new ShowDTO();
+
+		showDTO.setId(this.getId());
+		showDTO.setShowTitle(this.getShowTitle());
+		showDTO.setShowNetwork(this.getShowNetwork());
+
+		return showDTO;
+	}
 
 }

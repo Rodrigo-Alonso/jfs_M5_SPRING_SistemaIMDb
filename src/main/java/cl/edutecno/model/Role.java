@@ -1,27 +1,12 @@
 package cl.edutecno.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import org.springframework.security.core.GrantedAuthority;
 
-import lombok.Getter;
-import lombok.Setter;
-
-@Getter
-@Setter
-@Entity
-public class Role {
+public enum Role implements GrantedAuthority{
 	
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "ID_ROLE")
-	private Long id;
+	ROLE_ADMIN, ROLE_CLIENT;
 	
-	@Enumerated(EnumType.STRING)
-	@Column(name = "ROLE")
-	private Roles role;
+	public String getAuthority() {
+		return name();
+	}
 }
