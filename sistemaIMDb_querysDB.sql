@@ -39,9 +39,9 @@ INSERT INTO rating VALUES (NULL, 2, 1);
 INSERT INTO rating VALUES (NULL, 2, 2);
 
 
-SELECT AVG(rating) FROM rating WHERE show_id = 1;
+SELECT AVG(rating) FROM rating WHERE show_id = 2;
 
-SELECT * FROM rating r WHERE r.show_id = 1;
+SELECT * FROM rating r WHERE r.show_id = 2;
 
 SELECT * FROM shows;
 SELECT * FROM `user`;
