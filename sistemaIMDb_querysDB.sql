@@ -47,8 +47,12 @@ SELECT * FROM shows;
 SELECT * FROM `user`;
 SELECT * FROM rating; 
 
-SELECT s.id, s.show_title, s.show_network, AVG(r.rating) AS PROM FROM shows s
+SELECT s.id AS id, s.show_title AS showTitle, s.show_network AS showNetwork, AVG(r.rating) AS avgRating FROM shows s
 JOIN rating r ON r.show_id = s.id GROUP BY s.id;
+
+SELECT * FROM shows s INNER JOIN rating r ON s.id = r.show_id;
+
+SELECT s.id, s.show_title, s.show_network , AVG(r.rating) FROM shows s INNER JOIN rating r ON s.id = r.show_id GROUP BY s.id ;
 
 
 

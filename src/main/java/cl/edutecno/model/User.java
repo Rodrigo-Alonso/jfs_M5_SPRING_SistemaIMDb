@@ -49,8 +49,8 @@ public class User {
 	@Column(name = "password_confirmation")
 	private String passwordConfirmation;
 
-	@OneToMany(mappedBy = "user")
-	private List<Rating> ratings;
+//	@OneToMany(mappedBy = "user")
+//	private List<Rating> ratings;
 
 	@Enumerated(EnumType.STRING)
 	private Role role;

@@ -27,13 +27,13 @@ spring:
     active: dev
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    #url: "jdbc:mysql://localhost:3306/M5.EXAMENFINAL_SistemaIMDb"
-    url: "jdbc:mysql://localhost:3306/test"
+    url: "jdbc:mysql://localhost:3306/M5.EXAMENFINAL_SistemaIMDb"
+    #url: "jdbc:mysql://localhost:3306/test"
     username: "root"
     password: "very_strong_password"
   jpa:
     generate-ddl: true
-    hibernate.ddl-auto: create-drop
+    hibernate.ddl-auto: validate #create #create-drop
     show-sql: true 
     #database-platform: org.hibernate.dialect.MySQL8Dialect #Version 8 MySQL
     #database-platform: org.hibernate.dialect.MySQL5Dialect #Version 5 MySQL

@@ -34,8 +34,8 @@ public class Show {
 	@Column(name = "show_network")
 	private String showNetwork;
 	
-	@OneToMany(mappedBy = "show")
-	private List<Rating> ratings;
+//	@OneToMany(mappedBy = "show")
+//	private List<Rating> ratings;
 
 	// Convierte toDTO
 	public ShowDTO toDTO() {
