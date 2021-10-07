@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import cl.edutecno.dto.ShowDTO;
 import cl.edutecno.model.Show;
+import cl.edutecno.model.custom.IShowAvgRating;
 import cl.edutecno.repository.ShowRepository;
 import cl.edutecno.utils.DTOMapper;
 
@@ -53,5 +54,10 @@ public class ShowServiceImpl implements ShowService{
 	@Transactional(readOnly = true)
 	public List<ShowDTO> findByRating(int rating) {
 		return null;
+	}
+
+	@Override
+	public List<IShowAvgRating> findShowsByRatingAvg() {
+		return showRepository.findShowsByRatingAvg();
 	}
 }

@@ -47,9 +47,8 @@ SELECT * FROM shows;
 SELECT * FROM `user`;
 SELECT * FROM rating; 
 
-DROP TABLE rating;
-DROP TABLE `user`;
-DROP TABLE shows;
+SELECT s.id, s.show_title, s.show_network, AVG(r.rating) AS PROM FROM shows s
+JOIN rating r ON r.show_id = s.id GROUP BY s.id;
 
 
 

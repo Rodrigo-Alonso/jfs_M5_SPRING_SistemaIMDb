@@ -64,12 +64,14 @@ public class UserServiceImpl implements UserService, UserDetailsService {
 	}
 
 	@Override
-	public String signIn(String username, String password) {
+	public String signIn(UserDTO userDTO) {
 		try {
 			// Validar datos de inicio de sesion
-			authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(username, password));
+			authenticationManager.authenticate(
+					new UsernamePasswordAuthenticationToken(userDTO.getUsername(), userDTO.getPassword()));
 			// Retorna token si los datos son correctos
-			return jwtTokenProvider.createToken(username, userRepository.findByUsername(username).getRole());
+			return jwtTokenProvider.createToken(userDTO.getUsername(),
+					userRepository.findByUsername(userDTO.getUsername()).getRole());
 		} catch (AuthenticationException e) {
 			// Excepcion en caso de datos erroneos
 			throw new RestServiceException("username o password invalido", HttpStatus.UNPROCESSABLE_ENTITY);
@@ -103,16 +105,11 @@ public class UserServiceImpl implements UserService, UserDetailsService {
 		}
 		// Si existe, se retorna un objeto de tipo UserDetails, validando contraseña y
 		// su respectivo Rol.
-		return org.springframework.security.core.userdetails.User
-				.withUsername(username)
-				.password(user.getPassword())
-				.authorities(user.getRole())
-				.accountExpired(false)
-				.accountLocked(false)
-				.credentialsExpired(false)
-				.disabled(false)
-				.build();
-		//.authorities(user.getRoles().get(0).getRole()): Solo va a funcionar con el primer Rol
+		return org.springframework.security.core.userdetails.User.withUsername(username).password(user.getPassword())
+				.authorities(user.getRole()).accountExpired(false).accountLocked(false).credentialsExpired(false)
+				.disabled(false).build();
+		// .authorities(user.getRoles().get(0).getRole()): Solo va a funcionar con el
+		// primer Rol
 	}
 
 }

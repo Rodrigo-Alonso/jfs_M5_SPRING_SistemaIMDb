@@ -1,10 +1,13 @@
 package cl.edutecno.model;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -31,8 +34,8 @@ public class Show {
 	@Column(name = "show_network")
 	private String showNetwork;
 	
-//	@OneToMany(fetch = FetchType.LAZY, mappedBy = "show")
-//	private List<Rating> ratings;
+	@OneToMany(mappedBy = "show")
+	private List<Rating> ratings;
 
 	// Convierte toDTO
 	public ShowDTO toDTO() {

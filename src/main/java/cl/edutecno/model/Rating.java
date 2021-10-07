@@ -11,6 +11,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import cl.edutecno.dto.RatingDTO;
 import lombok.Getter;
 import lombok.Setter;
@@ -29,12 +31,12 @@ public class Rating {
 	@Column(name = "rating")
 	private int rating;
 	
-//	@JsonIgnore //Tomcat exception Cannot call sendError() after the response has been committed?
+	@JsonIgnore //Tomcat exception Cannot call sendError() after the response has been committed?
 	@ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.LAZY)
 	@JoinColumn(name = "show_id")
 	private Show show;
 	
-//	@JsonIgnore
+	@JsonIgnore
 	@ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.LAZY)
 	@JoinColumn(name = "user_id")
 	private User user;

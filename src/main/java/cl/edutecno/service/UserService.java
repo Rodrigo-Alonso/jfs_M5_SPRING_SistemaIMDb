@@ -12,7 +12,7 @@ public interface UserService {
 	List<UserDTO> findAll();
 	UserDTO findById(Integer id);
 	void delete(UserDTO userDTO);
-	String signIn(String username, String password);
+	String signIn(UserDTO userDTO);
 	String signUp(UserDTO userDTO);
 	UserDetails loadUserByUsername(String username);
 
