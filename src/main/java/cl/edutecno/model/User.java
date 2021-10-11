@@ -1,17 +1,12 @@
-package cl.edutecno.model;
+ package cl.edutecno.model;
 
-import java.util.List;
-
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -48,8 +43,9 @@ public class User {
 
 	@Column(name = "password_confirmation")
 	private String passwordConfirmation;
-
-//	@OneToMany(mappedBy = "user")
+	
+	//Eliminar Shows y sus respectivos rating 1:N
+//	@OneToMany(cascade = CascadeType.ALL, mappedBy = "user", fetch = FetchType.EAGER)
 //	private List<Rating> ratings;
 
 	@Enumerated(EnumType.STRING)
@@ -63,6 +59,7 @@ public class User {
 		userDTO.setUsername(this.getUsername());
 		userDTO.setEmail(this.getEmail());
 		userDTO.setPassword(this.getPassword());
+		userDTO.setPasswordConfirmation(this.getPasswordConfirmation());
 		userDTO.setRole(this.getRole());
 
 		return userDTO;

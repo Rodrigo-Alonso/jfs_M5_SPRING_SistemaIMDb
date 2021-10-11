@@ -12,5 +12,6 @@ public class RatingDTO {
 	private Integer id;
 	private int rating;
 	private Show show;
+//	private List<Show> show;
 	private User user;
 }

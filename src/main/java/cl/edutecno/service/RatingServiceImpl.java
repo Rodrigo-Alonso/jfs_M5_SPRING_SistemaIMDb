@@ -41,4 +41,13 @@ public class RatingServiceImpl implements RatingService{
 	public Double avgRatingByShowId(Integer id) {
 		return ratingRepository.ratingsPromedio(id);
 	}
+
+	@Override
+	@Transactional(readOnly = false)
+	public void deleteAllByShowId(Integer id) {
+		ratingRepository.deleteAllByShowId(id);
+		
+	}
+	
+	
 }

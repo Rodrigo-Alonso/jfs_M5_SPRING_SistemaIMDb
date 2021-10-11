@@ -1,13 +1,10 @@
 package cl.edutecno.model;
 
-import java.util.List;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -34,7 +31,13 @@ public class Show {
 	@Column(name = "show_network")
 	private String showNetwork;
 	
-//	@OneToMany(mappedBy = "show")
+	//Eliminar Shows y sus respectivos rating N:N
+//	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+//	@JoinTable(name = "shows_ratings", joinColumns = @JoinColumn(name = "show_id"), inverseJoinColumns = @JoinColumn(name = "rating_id"))
+//	private List<Rating> ratings;
+	
+	//Eliminar Shows y sus respectivos rating 1:N
+//	@OneToMany(cascade = CascadeType.ALL, mappedBy = "show", fetch = FetchType.LAZY)
 //	private List<Rating> ratings;
 
 	// Convierte toDTO

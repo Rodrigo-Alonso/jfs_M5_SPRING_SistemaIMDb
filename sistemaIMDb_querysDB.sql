@@ -50,10 +50,20 @@ SELECT * FROM rating;
 SELECT s.id AS id, s.show_title AS showTitle, s.show_network AS showNetwork, AVG(r.rating) AS avgRating FROM shows s
 JOIN rating r ON r.show_id = s.id GROUP BY s.id;
 
+SELECT s.id AS id, s.show_title AS showTitle, s.show_network AS showNetwork, AVG(r.rating) AS avgRating FROM shows s
+LEFT JOIN rating r ON r.show_id = s.id GROUP BY s.id;
+
 SELECT * FROM shows s INNER JOIN rating r ON s.id = r.show_id;
 
 SELECT s.id, s.show_title, s.show_network , AVG(r.rating) FROM shows s INNER JOIN rating r ON s.id = r.show_id GROUP BY s.id ;
 
+SELECT u.id AS id, u.email AS email, r.rating AS rating  FROM `user` u 
+JOIN rating r ON r.user_id = u.id WHERE r.show_id = 4;
 
+DELETE FROM shows WHERE id = 12;
+
+DELETE FROM rating WHERE rating.show_id = 12;
+
+DELETE FROM rating WHERE rating.id = 21;
 
 

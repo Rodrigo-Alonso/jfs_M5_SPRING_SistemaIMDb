@@ -59,6 +59,7 @@ public class ShowController {
 	@DeleteMapping
 	@ResponseStatus(HttpStatus.OK)
 	public void deleteShow(@RequestBody ShowDTO showDTO) {
+		ratingService.deleteAllByShowId(showDTO.getId());
 		showService.delete(showDTO);
 	}
 

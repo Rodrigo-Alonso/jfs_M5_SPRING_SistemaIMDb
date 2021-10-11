@@ -10,4 +10,5 @@ public interface RatingService {
 	List<RatingDTO> findAll();
 	List<RatingDTO> findAllByShowId(Integer id);
 	Double avgRatingByShowId(Integer id);
+	void deleteAllByShowId(Integer id);
 }
