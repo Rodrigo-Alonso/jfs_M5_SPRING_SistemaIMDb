@@ -15,5 +15,6 @@ public interface UserService {
 	String signIn(UserDTO userDTO);
 	String signUp(UserDTO userDTO);
 	UserDetails loadUserByUsername(String username);
+	UserDTO findUserByUsername(String username);
 
 }

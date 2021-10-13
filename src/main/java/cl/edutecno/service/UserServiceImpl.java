@@ -112,4 +112,12 @@ public class UserServiceImpl implements UserService, UserDetailsService {
 		// primer Rol
 	}
 
+	public UserDTO findUserByUsername(String username) {
+		UserDTO userDTO = new UserDTO();
+		userDTO = userRepository.findByUsername(username).toDTO();
+		userDTO.setPassword(null);
+		userDTO.setPasswordConfirmation(null);
+		return userDTO;
+	};
+
 }

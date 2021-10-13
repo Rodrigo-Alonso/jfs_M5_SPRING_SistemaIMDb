@@ -18,9 +18,8 @@ public interface ShowRepository extends JpaRepository<Show, Integer> {
 //			+ "FROM shows s INNER JOIN s.rating r GROUP BY s.id")
 //	public List<ShowAvgRating> findShowsByRatingAvg();
 
-	@Query(value = "SELECT s.id AS id, s.show_title AS showTitle, s.show_network AS showNetwork, "
-			+ "AVG(r.rating) AS avgRating FROM shows s LEFT JOIN rating r ON r.show_id = s.id GROUP BY s.id", nativeQuery = true)
+	@Query(value = "SELECT s.id AS id, s.show_title AS showTitle, s.show_network AS showNetwork, AVG(r.rating) AS avgRating "
+			+ "FROM shows s LEFT JOIN rating r ON r.show_id = s.id GROUP BY s.id ORDER BY avgRating DESC", nativeQuery = true)
 	List<IShowAvgRating> findShowsByRatingAvg();
 	
-
 }

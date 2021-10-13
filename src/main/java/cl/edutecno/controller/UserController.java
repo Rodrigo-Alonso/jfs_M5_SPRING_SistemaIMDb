@@ -59,4 +59,10 @@ public class UserController {
 		return userService.signUp(userDTO);
 	}
 
+	@GetMapping("/findUser/{username}")
+	@ResponseStatus(HttpStatus.OK)
+	public UserDTO findUserByUsername(@PathVariable String username) {
+		return userService.findUserByUsername(username);
+	}
+
 }
